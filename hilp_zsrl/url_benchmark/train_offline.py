@@ -4,7 +4,7 @@ import os
 if 'mac' in platform.platform():
     pass
 else:
-    os.environ['MUJOCO_GL'] = 'egl'
+    os.environ['MUJOCO_GL'] = 'glfw'
     if 'SLURM_STEP_GPUS' in os.environ:
         os.environ['EGL_DEVICE_ID'] = os.environ['SLURM_STEP_GPUS']
 
@@ -423,7 +423,7 @@ class Workspace:
         domain_tasks = {
             "cheetah": ['walk', 'walk_backward', 'run', 'run_backward'],
             "quadruped": ['stand', 'walk', 'run', 'jump'],
-            "walker": ['stand', 'walk', 'run', 'flip'],
+            "walker": ['stands', 'walks', 'runs', 'flip'],
             "jaco": ['reach_top_left', 'reach_top_right', 'reach_bottom_left', 'reach_bottom_right'],
         }
         if self.domain not in domain_tasks:
